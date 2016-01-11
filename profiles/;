@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="row">
+	<div class="col-sm-4">
+		{% if goals %}
+			yes goals
+		{% else %}
+			You have no goals yet.
+		{% endif %}
+	</div>
+</div>
+
+{% endblock %}
+
+

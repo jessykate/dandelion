@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="row">
+	<div class="col-sm-4">
+		{% if goals_list %}
+			{% for goals in goals_list %}
+			<div><a href="{% url 'goals:detail' goals.id %}">{{goals}}</a></div>
+			{% endfor %}
+		{% else %}
+			You have no goals yet.
+		{% endif %}
+	</div>
+	<div class="col-sm-4">
+		<a href="{% url 'goals:create' %}" class="btn btn-default btn-large">Add Goals</a>
+	</div>
+</div>
+
+{% endblock %}
+
+

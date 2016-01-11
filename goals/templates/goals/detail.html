@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="row">
+	<div class="col-sm-6">
+		<h1>Goals Document</h1>
+		<h4>Created {{goals.created}}</h4>
+		<div>
+			{{ goals.text }}
+		</div>
+	</div>
+</div>
+
+{% endblock %}
+
+
+

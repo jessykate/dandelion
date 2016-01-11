@@ -1,0 +1,4 @@
+django
+psycopg2
+# doesn't seem to work from the file but maybe from command line?
+# Pillow --global-option="--disable-zlib"
