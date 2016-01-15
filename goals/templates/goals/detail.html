@@ -6,8 +6,8 @@
 	<div class="col-sm-6">
 		<h1>Goals Document</h1>
 		<h4>Created {{goals.created}}</h4>
-		<div>
-			{{ goals.text }}
+		<div class="spacer-md-top">
+			{{ goals.text|linebreaks|urlize }}
 		</div>
 	</div>
 </div>

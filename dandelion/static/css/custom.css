@@ -9,3 +9,14 @@ body {
 .landing {
 	text-align: center;
 }
+
+.spacer-md-bottom {
+	margin-bottom: 30px; 	
+}
+.spacer-md-top {
+	margin-top: 30px; 	
+}
+
+.de-emph {
+	color: #AAA;
+}

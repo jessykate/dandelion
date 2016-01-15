@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="row">
+	<div class="col-sm-5">
+		<h1>{{ny.name}}</h1>
+		<h4>{{ny.start}} - {{ny.end}}</h4>
+		<div>{{ny.info}}</div>
+	</div>
+</div>
+
+<div class="row spacer-md-top">
+	<div class="col-sm-12">
+		<div class="row">
+			<div class="col-sm-8">
+				<h2>Attendees</h2>
+			</div>
+			<div class="col-sm-4">
+				<h2>Lists</h2>
+				<div class="row spacer-md-top">
+					<div class="col-md-12">
+						{% for l in ny.list_set.all %}
+							<div class="col-sm-12"><a href="{% url 'newyears:list_detail' ny.id l.id %}">{{l.name}}</a></div>
+						{% endfor %}
+					</div>
+				</div>
+				<div class="row spacer-md-top">
+					<div class="col-md-12">
+						<a href="{% url 'newyears:list_create' ny.id %}" class="btn btn-default btn-large">Add List</a>
+					</div>
+				</div>
+		</div>
+	</div>
+</div>
+
+
+{% endblock %}
+
+

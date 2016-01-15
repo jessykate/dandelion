@@ -6,7 +6,7 @@
 	<div class="col-sm-4">
 		{% if nys %}
 			{% for ny in nys %}
-				<a href="{% url 'newyears:detail' ny.id %}">{{ny}}</a>
+				<div class="spacer-md-top"><a href="{% url 'newyears:newyear_detail' ny.id %}">{{ny}}</a></div>
 			{% endfor %}
 		{% else %}
 			No New Years have been defined yet. 

@@ -31,11 +31,15 @@ class Registration(models.Model):
 
 class List(models.Model):
 	created = models.DateTimeField(auto_now_add=True)
+	user = models.ForeignKey(User)
 	name = models.CharField(max_length=200)
 	newyear = models.ForeignKey(NewYear)
 
+	def __str__(self):
+		return '[%d] %s' % (self.newyear.year, self.name)
+
 class ListComment(models.Model):
-	text = models.TextField()
+	text = models.TextField(verbose_name='Comment')
 	user = models.ForeignKey(User)
 	created = models.DateTimeField(auto_now_add=True)
 	updated = models.DateTimeField(auto_now=True)
