@@ -40,7 +40,7 @@
 			<div id="navbar" class="collapse navbar-collapse">
 			<ul class="nav navbar-nav">
 				<li><a href="{% url 'newyears:index' %}">NY</a></li>
-				<li><a href="{% url 'user_detail' user.id %}">{{ user.first_name }}</a></li>
+				<li><a href="{% url 'user_detail' request.user.id %}">{{ request.user.first_name }}</a></li>
 			</ul>
 			</div><!--/.nav-collapse -->
 		</div>
