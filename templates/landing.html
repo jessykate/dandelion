@@ -1,9 +1,11 @@
 {% extends "base.html" %}
+{% load staticfiles %}
 
 {% block content %}
 
 <div class="row">
-	<div class="col-sm-4 landing">
+	<div class="col-md-offset-4 col-sm-4 landing">
+		<img src="{% static 'img/4d_logo.jpg' %}">
 		<p> Browse people and goals by year, or view your goals.</p>
 	</div>
 </div>

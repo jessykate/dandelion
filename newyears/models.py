@@ -12,11 +12,12 @@ class NewYear(models.Model):
 	info = models.TextField(help_text="Location and other information about this event")
 	start = models.DateTimeField()
 	end = models.DateTimeField()
+	attendees = models.ManyToManyField(User)
 	# disable until Pillow install is sorted out.
 	# picture = models.ImageField()
 
 	def __str__(self):
-		return '[%d] %s' % (self.year, self.name)
+		return '%d %s' % (self.year, self.name)
 
 class Registration(models.Model):
 	created = models.DateTimeField(auto_now_add=True)

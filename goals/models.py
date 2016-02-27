@@ -11,6 +11,7 @@ class Goals(models.Model):
 	user = models.ForeignKey(User)
 	year = models.ForeignKey(NewYear)
 	text = models.TextField()
+	shared_with = models.ManyToManyField(User, related_name="shared_with")
 
 	def __str__(self):
 		return '%d Goals from %d/%d/%d' % (self.year.year, self.created.month, self.created.day, self.created.year)

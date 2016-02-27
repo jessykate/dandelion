@@ -20,12 +20,15 @@ from newyears import views
 from django.views.generic import TemplateView
 from django.contrib.auth.decorators import login_required, permission_required
 
+from . import views
 
 urlpatterns = [
 	url(r'^$', login_required(TemplateView.as_view(template_name="landing.html"))),
     url(r'^admin/', admin.site.urls),
 	# include all the default authentication views. more info at
 	# https://docs.djangoproject.com/es/1.9/topics/auth/default/#module-django.contrib.auth.views
+    url(r'^user/(?P<user_id>[0-9]+)/goals$', views.user_detail, name='user_detail'),
+    url(r'^user/(?P<user_id>[0-9]+)/$', views.user_detail, name='user_detail'),
 	url(r'^user/', include('django.contrib.auth.urls')),
 	url(r'^goals/', include('goals.urls')),
 	url(r'^newyears/', include('newyears.urls')),

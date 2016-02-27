@@ -4,6 +4,15 @@
 
 <div class="row">
 	<div class="col-sm-10">
+		<ol class="breadcrumb">
+			<li><a href="{% url 'newyears:index' %}">NY</a></li>
+			<li><a href="{% url 'newyears:newyear_detail' newyear_id  %}">{{ l.newyear }}</a></li>
+			<li class="active">Lists</li>
+		</ol>
+	</div>
+</div>
+<div class="row">
+	<div class="col-sm-10">
 		<h1>{{l.name}}</h1>
 		{% for comment in l.listcomment_set.all %}
 			<div class="row spacer-md-top">

@@ -1,6 +1,14 @@
 {% extends "base.html" %}
 
 {% block content %}
+<div class="row">
+	<div class="col-sm-10">
+		<ol class="breadcrumb">
+			<li><a href="{% url 'newyears:index' %}">NY</a></li>
+			<li class="active">{{ny}}</li>
+		</ol>
+	</div>
+</div>
 
 <div class="row">
 	<div class="col-sm-5">
@@ -15,13 +23,24 @@
 		<div class="row">
 			<div class="col-sm-8">
 				<h2>Attendees</h2>
+				<div class="row spacer-md-top">
+					<div class="col-md-12">
+						{% for u in ny.attendees.all %}
+						<div class="row">
+							<div class="col-sm-12"><a href="{% url 'user_detail' u.id %}">{{u.first_name}} {{u.last_name}}</a></div>
+						</div>
+						{% endfor %}
+					</div>
+				</div>
 			</div>
 			<div class="col-sm-4">
 				<h2>Lists</h2>
 				<div class="row spacer-md-top">
 					<div class="col-md-12">
 						{% for l in ny.list_set.all %}
-							<div class="col-sm-12"><a href="{% url 'newyears:list_detail' ny.id l.id %}">{{l.name}}</a></div>
+							<div class="row">
+								<div class="col-sm-12"><a href="{% url 'newyears:list_detail' ny.id l.id %}">{{l.name}}</a></div>
+							</div>
 						{% endfor %}
 					</div>
 				</div>

@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+
+<div class="row">
+	<div class="col-sm-4">
+		{{ user.first_name }}
+		<hr>
+
+		<h2>Goals</h2>
+		{% with goals=user.goals_set.all %}
+			{% regroup goals by year as goals_by_year %}
+			{% for goals_this_year in goals_by_year %}
+				<h3>{{ goals_this_year.grouper.year }}</h3>
+				{% for item in goals_this_year.list %}
+				<div>
+					<a href="{% url 'goals:detail' item.id %}">{{ item }}</a>
+				</div>
+				{% endfor %}
+			{% endfor %}
+		{% endwith %}
+	</div>
+</div>
+
+{% endblock %}
+
+

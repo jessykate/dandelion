@@ -4,6 +4,11 @@
 
 <div class="row">
 	<div class="col-sm-6">
+		<ol class="breadcrumb">
+			<li><a href="{% url 'user_detail' goals.user.id  %}">{{ goals.user.first_name }}</a></li>
+			<li><a href="#"></a>Goals</li>
+			<li class="active">{{ goals.year.year}}</li>
+		</ol>
 		<h1>Goals Document</h1>
 		<h4>Created {{goals.created}}</h4>
 		<div class="spacer-md-top">
