@@ -2,20 +2,7 @@
 
 {% block content %}
 
-{% if messages %}
-	<div class="row top-spacer">
-		<div class="col-xs-6">
-		<div class="messages">
-			{% for message in messages %}
-			<div class="alert alert-info">
-				<button type="button" class="close" data-dismiss="alert">×</button>
-				<div {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</div>
-			</div>
-			{% endfor %}
-		</div>
-		</div>
-	</div>
-{% endif %}
+{% include 'snippets/messages.html' %}
 
 {% if form.errors %}
 	<p>Your username and password didn't match. Please try again.</p>
@@ -30,15 +17,21 @@
     {% endif %}
 {% endif %}
 
+<div class="center">
 <form method="post" action="{% url 'login' %}">
 	{% csrf_token %}
+    <div>
 	{{ form.username.label_tag }}
 	{{ form.username }}
+    </div>
+    <div>
 	{{ form.password.label_tag }}
 	{{ form.password }}
+    </div>
 	<input type="submit" value="login" />
 	<input type="hidden" name="next" value="{{ next }}" />
 </form>
+</div>
 
 {# Assumes you setup the password_reset view in your URLconf #}
 <p><a href="{% url 'password_reset' %}">Lost password?</a></p>

@@ -1,0 +1,18 @@
+<nav class="navbar navbar-inverse navbar-fixed-top center">
+<div class="container">
+    {% if request.user.id %}
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/">4D</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="{% url 'newyears:index' %}">NY</a></li>
+                <li><a href="{% url 'user_detail' request.user.id %}">{{ request.user.first_name }}</a></li>
+                <li><a href="{% url 'logout' %}">Logout</a></li>
+                <li><a href="{% url 'password_change' %}">Change Password</a></li>
+            </ul>
+        </div><!--/.nav-collapse -->
+    {% endif %}
+</div>
+</nav>
+

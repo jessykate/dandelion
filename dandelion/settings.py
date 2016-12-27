@@ -111,6 +111,7 @@ STATIC_URL = '/static/'
 
 LOGIN_URL = '/user/login/'
 LOGOUT_URL = '/user/logout/'
+LOGIN_REDIRECT_URL = '/'
 
 # import any local settings
 try:

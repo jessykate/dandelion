@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect, HttpResponse 
 from django.core.urlresolvers import reverse
+from django.contrib import messages
 
 
 from goals.models import *
@@ -30,6 +31,11 @@ def create(request):
 	return render(request, 'goals/create.html', context)
 
 def detail(request, goals_id):
-	goals = Goals.objects.get(id=goals_id)
-	context = {'goals': goals}
-	return render(request, 'goals/detail.html', context)
+    goals = Goals.objects.get(id=goals_id)
+    print goals.user
+    print request.user
+    if goals.user != request.user and request.user not in goals.shared_with.all():
+        messages.add_message(request, messages.INFO, 'You are not authorized to view that page.')
+        return HttpResponseRedirect("/404")
+    context = {'goals': goals}
+    return render(request, 'goals/detail.html', context)

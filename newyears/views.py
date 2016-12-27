@@ -10,7 +10,7 @@ from newyears.forms import *
 # Create your views here.
 @login_required
 def index(request):
-	nys = NewYear.objects.all()
+	nys = NewYear.objects.all().order_by('-year')
 	context = {'nys': nys}
 	return render(request, 'newyears/index.html', context)
 

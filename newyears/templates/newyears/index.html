@@ -5,8 +5,13 @@
 <div class="row">
 	<div class="col-sm-4">
 		{% if nys %}
-			{% for ny in nys %}
-				<div class="spacer-md-top"><a href="{% url 'newyears:newyear_detail' ny.id %}">{{ny}}</a></div>
+            {% regroup nys by year as nys_by_year %}
+			{% for events in nys_by_year %}
+                <h3>{{ events.grouper }}</h3>
+                {% for event in events.list %}
+                    <div class="spacer-md-top"><a href="{% url 'newyears:newyear_detail' event.id %}">{{event.name}}</a></div>
+                {% endfor %}
+                <hr>
 			{% endfor %}
 		{% else %}
 			No New Years have been defined yet. 

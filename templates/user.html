@@ -9,17 +9,28 @@
 		<hr>
 
 		<h2>Goals</h2>
-		{% with goals=user.goals_set.all %}
-			{% regroup goals by year as goals_by_year %}
-			{% for goals_this_year in goals_by_year %}
-				<h3>{{ goals_this_year.grouper.year }}</h3>
-				{% for item in goals_this_year.list %}
-				<div>
-					<a href="{% url 'goals:detail' item.id %}">{{ item }}</a>
-				</div>
-				{% endfor %}
-			{% endfor %}
-		{% endwith %}
+
+        {% if goals %}
+
+            {% regroup goals by year as goals_by_year %}
+            {% for goals_this_year in goals_by_year %}
+                <h3>{{ goals_this_year.grouper.year }}</h3>
+                {% for item in goals_this_year.list %}
+                <div>
+                    <a href="{% url 'goals:detail' item.id %}">{{ item }}</a>
+                </div>
+                {% endfor %}
+            {% endfor %}
+
+        {% else %}
+
+            {{ user.first_name }} has not yet shared any goals with you.
+        
+        {% endif %}
+
+	</div>
+	<div class="col-sm-4">
+		<a href="{% url 'goals:create' %}" class="btn btn-default btn-large">Add Goals</a>
 	</div>
 </div>
 
