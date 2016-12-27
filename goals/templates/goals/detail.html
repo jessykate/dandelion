@@ -12,7 +12,7 @@
 		<h1>Goals Document</h1>
 		<h4>Created {{goals.created}}</h4>
 		<div class="spacer-md-top">
-			{{ goals.text|linebreaks|urlize }}
+			{{ goals.text|safe|linebreaks }}
 		</div>
 	</div>
 </div>
