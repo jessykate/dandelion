@@ -3,17 +3,17 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect, HttpResponse 
 from django.core.urlresolvers import reverse
 from django.contrib import messages
-
+from django.db.models import Q
 
 from goals.models import *
 from goals.forms import *
 
-# Create your views here.
 @login_required
-def index(request):
-	goals_list = Goals.objects.filter(user=request.user)
-	context = {'goals_list': goals_list}
-	return render(request, 'goals/index.html', context)
+def goal_list(request, year):
+    goals_list = Goals.objects.filter(year__year=year).filter(Q(user=request.user) | Q (shared_with=request.user))
+    print goals_list
+    context = {'goals_list': goals_list, 'year': year}
+    return render(request, 'goals/index.html', context)
 
 def create(request):
 	if request.method == 'POST':

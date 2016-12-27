@@ -3,19 +3,26 @@
 {% block content %}
 
 <div class="row">
+    <h1>Goals from {{year}}</h1>
+</div>
+
+<div class="row">
 	<div class="col-sm-4">
 		{% if goals_list %}
 			{% for goals in goals_list %}
-			<div><a href="{% url 'goals:detail' goals.id %}">{{goals}}</a></div>
+			<div>
+                {{goals.user.first_name}}: <a href="{% url 'goals:detail' goals.id %}">{{goals}}</a>
+            </div>
 			{% endfor %}
 		{% else %}
-			You have no goals yet.
+            You do not have access to any goals from this year.
 		{% endif %}
 	</div>
-	<div class="col-sm-4">
-		<a href="{% url 'goals:create' %}" class="btn btn-default btn-large">Add Goals</a>
-	</div>
 </div>
+
+<footer>
+    <p>* There may be other goals which are not visible to you.</p>
+</footer>
 
 {% endblock %}
 
