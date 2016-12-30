@@ -22,7 +22,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', 'fourd.herokuapp.com']
+ALLOWED_HOSTS = ['localhost', 'fourd.herokuapp.com', 'www.4dnetwork.org', '4dnetwork.org', 'www.4dnewyears.com', '4dnewyears.com']
 
 
 # Application definition
