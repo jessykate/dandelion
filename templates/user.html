@@ -12,20 +12,22 @@
 
         {% if goals %}
 
-            {% regroup goals by year as goals_by_year %}
-            {% for goals_this_year in goals_by_year %}
-                <h3>{{ goals_this_year.grouper.year }}</h3>
-                {% for item in goals_this_year.list %}
-                <div>
+            {% for year, goals_this_year in goals.items %}
+                <h3>{{ year }}</h3>
+                {% for item in goals_this_year %}
+                <div class='goal-list'>
                     <a href="{% url 'goals:detail' item.id %}">{{ item }}</a>
                 </div>
                 {% endfor %}
             {% endfor %}
 
         {% else %}
+            {% if request.user == user %}
+                You have not saved any goals yet. 
+            {% else %}
+                {{ user.first_name }} has not yet shared any goals with you.
+            {% endif %}
 
-            {{ user.first_name }} has not yet shared any goals with you.
-        
         {% endif %}
 
 	</div>

@@ -3,16 +3,16 @@
         {% if request.user.id %}
             <div class="navbar-header">
                 <a class="navbar-brand" href="/">
-                    4D
+                    Home
                 </a>
             </div>
             <div id="navbar" class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="{% url 'newyears:index' %}">Events</a></li>
+                    <li><a href="{% url 'newyears:index' %}">4Ds</a></li>
 
                     <li role="presentation" class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                            Goals <span class="caret"></span>
+                            Browse Goals <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu">
                             {% for ny in GOAL_YEARS %}

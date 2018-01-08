@@ -19,6 +19,8 @@ from goals import views
 from newyears import views
 from django.views.generic import TemplateView
 from django.contrib.auth.decorators import login_required, permission_required
+from django.conf.urls.static import static
+from django.conf import settings
 
 from . import views
 
@@ -32,4 +34,4 @@ urlpatterns = [
 	url(r'^user/', include('django.contrib.auth.urls')),
 	url(r'^goals/', include('goals.urls')),
 	url(r'^newyears/', include('newyears.urls')),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

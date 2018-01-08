@@ -5,19 +5,24 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 
-class NewYear(models.Model):
-	created = models.DateTimeField(auto_now_add=True)
-	name = models.CharField(max_length=50)
-	year = models.IntegerField()
-	info = models.TextField(help_text="Location and other information about this event")
-	start = models.DateTimeField()
-	end = models.DateTimeField()
-	attendees = models.ManyToManyField(User)
-	# disable until Pillow install is sorted out.
-	# picture = models.ImageField()
+class NewYearManager(models.Manager):
+    def years(self):
+        return [ny.year for ny in self.get_queryset().order_by('-year').distinct('year')]
 
-	def __str__(self):
-		return '%d %s' % (self.year, self.name)
+class NewYear(models.Model):
+    created = models.DateTimeField(auto_now_add=True)
+    name = models.CharField(max_length=50)
+    year = models.IntegerField()
+    info = models.TextField(help_text="Location and other information about this event")
+    start = models.DateTimeField()
+    end = models.DateTimeField()
+    attendees = models.ManyToManyField(User)
+    objects = NewYearManager()
+    # disable until Pillow install is sorted out.
+    # picture = models.ImageField()
+
+    def __str__(self):
+        return '%d %s' % (self.year, self.name)
 
 class Registration(models.Model):
 	created = models.DateTimeField(auto_now_add=True)
