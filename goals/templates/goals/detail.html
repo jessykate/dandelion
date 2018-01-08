@@ -11,6 +11,13 @@
 		</ol>
 		<h1>Goals Document</h1>
 		<h4>Created {{goals.created}}</h4>
+        
+        <span><small> shared with: 
+            {% for person in goals.shared_with %}
+                {{ person.first_name }} {{ person.last_name }}{% if not forloop.last %}, {% endif %}
+            {% endfor %}
+        </small></span>
+
 		<div class="spacer-md-top">
 			{{ goals.text|safe|linebreaks }}
 		</div>

@@ -20,7 +20,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['localhost', 'fourd.herokuapp.com', 'www.4dnetwork.org', '4dnetwork.org', 'www.4dnewyears.com', '4dnewyears.com']
 
@@ -33,7 +33,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'whitenoise.runserver_nostatic',
+    #    'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
 	'dandelion',
 	'newyears',
@@ -118,6 +118,8 @@ STATICFILES_DIRS = (
             os.path.join(PROJECT_ROOT, 'static'),
             )
 
+MEDIA_ROOT='media/'
+MEDIA_URL='media/'
 
 LOGIN_URL = '/user/login/'
 LOGOUT_URL = '/user/logout/'
